@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>ItemsAdapter.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #8c8c8c; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ItemsAdapter.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.simpletodo;</span>
+
+<span class="s0">import </span><span class="s1">android.support.annotation.NonNull;</span>
+<span class="s0">import </span><span class="s1">android.view.LayoutInflater;</span>
+<span class="s0">import </span><span class="s1">android.view.View;</span>
+<span class="s0">import </span><span class="s1">android.view.ViewGroup;</span>
+
+<span class="s0">import </span><span class="s1">androidx.annotation.NoNull;</span>
+<span class="s0">import </span><span class="s1">andriodx.reyclerview.widget.RecyclerView;</span>
+
+<span class="s2">//Responsidble for displlaying data from the model into a row in the recyller view</span>
+<span class="s0">public class </span><span class="s1">ItemsAdapter </span><span class="s0">extends </span><span class="s1">RecyclerView.ViewHolder&lt;ItemsAdapter.ViewHolder&gt; {</span>
+
+    <span class="s1">List&lt;String&gt; items;</span>
+
+    <span class="s0">public </span><span class="s1">ItemsAdapter(List&lt;String&gt; items) {</span>
+        <span class="s0">this</span><span class="s1">.items = items;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@NonNull</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public </span><span class="s1">ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, </span><span class="s0">int </span><span class="s1">viewType){</span>
+        <span class="s2">// Use layout infloatro to inflate view</span>
+        <span class="s1">View todoView = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, attachToRoot: </span><span class="s0">false</span><span class="s1">)</span>
+        <span class="s2">// Wrap it inside a view holder and return it</span>
+        <span class="s0">return new </span><span class="s1">ViewHolder(todoView);</span>
+    <span class="s1">}</span>
+    <span class="s2">// responidlle for binding date to a particular view holder</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onBindViewHolder(@NoNull ViewHolder holder, </span><span class="s0">int </span><span class="s1">postion){</span>
+        <span class="s2">//Grab the intem at the postion</span>
+        <span class="s1">String item = items.get(postion);</span>
+        <span class="s2">// Bind the item into the specifed view holder</span>
+        <span class="s1">holder.bind(item);</span>
+
+
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public int </span><span class="s1">getItemCount() {</span>
+        <span class="s0">return </span><span class="s1">items.size();</span>
+    <span class="s1">}</span>
+
+    <span class="s2">// Container to provide easy acces to viess that reprents each row of the llist</span>
+    <span class="s0">class </span><span class="s1">ViewHolder </span><span class="s0">extends </span><span class="s1">RecyclerView.ViewHolder {</span>
+        <span class="s1">TextView tvItem;</span>
+
+        <span class="s0">public </span><span class="s1">ViewHolder (@NoNull View itemView){</span>
+            <span class="s0">super</span><span class="s1">(itemView);</span>
+            <span class="s1">tvItem = itemView.findViewById(.android.R.id.text1);</span>
+
+        <span class="s1">}</span>
+        <span class="s2">//Update the view inside of the view holldr iwht this data</span>
+        <span class="s0">public void </span><span class="s1">bind(String item) {</span>
+            <span class="s1">tvItem.setText(item);</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
